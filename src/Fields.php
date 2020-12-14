@@ -46,6 +46,7 @@ class Fields
                     'display' => __("seo-pro::fieldsets/{$langFile}.enabled"),
                     'instructions' => __("seo-pro::fieldsets/{$langFile}.enabled_instruct"),
                     'type' => 'toggle',
+                    'localizable' => true,
                     'default' => true,
                 ],
             ],
@@ -57,6 +58,7 @@ class Fields
                     'placeholder' => $this->getPlaceholder('title'),
                     'type' => 'seo_pro_source',
                     'disableable' => true,
+                    'localizable' => true,
                     'field' => [
                         'type' => 'text',
                     ],
@@ -69,6 +71,7 @@ class Fields
                     'instructions' => __("seo-pro::fieldsets/{$langFile}.description_instruct"),
                     'placeholder' => $this->getPlaceholder('description'),
                     'type' => 'seo_pro_source',
+                    'localizable' => true,
                     'field' => [
                         'type' => 'textarea',
                     ],
@@ -83,6 +86,7 @@ class Fields
                     'type' => 'seo_pro_source',
                     'from_field' => false,
                     'disableable' => true,
+                    'localizable' => true,
                     'field' => false,
                 ],
             ],
@@ -94,6 +98,7 @@ class Fields
                     'placeholder' => $this->getPlaceholder('site_name_position'),
                     'type' => 'seo_pro_source',
                     'from_field' => false,
+                    'localizable' => true,
                     'field' => [
                         'type' => 'select',
                         'options' => [
@@ -112,6 +117,7 @@ class Fields
                     'placeholder' => $this->getPlaceholder('site_name_separator'),
                     'type' => 'seo_pro_source',
                     'from_field' => false,
+                    'localizable' => true,
                     'field' => [
                         'type' => 'text',
                     ],
@@ -124,6 +130,7 @@ class Fields
                     'instructions' => __("seo-pro::fieldsets/{$langFile}.canonical_url_instruct"),
                     'placeholder' => $this->isContent ? $this->getPlaceholder('canonical_url') : false,
                     'type' => 'seo_pro_source',
+                    'localizable' => true,
                     'field' => $this->isContent ? ['type' => 'text'] : false,
                 ],
             ],
@@ -136,10 +143,12 @@ class Fields
                     'type' => 'seo_pro_source',
                     'from_field' => false,
                     'disableable' => true,
+                    'localizable' => true,
                     'field' => [
                         'type' => 'select',
                         'create' => true,
                         'multiple' => true,
+                        'localizable' => true,
                         'options' => [
                             'noindex',
                             'nofollow',
@@ -154,6 +163,7 @@ class Fields
                     'instructions' => __("seo-pro::fieldsets/{$langFile}.image_instruct"),
                     'placeholder' => $this->getPlaceholder('image'),
                     'type' => 'seo_pro_source',
+                    'localizable' => true,
                     'allowed_fieldtypes' => [
                         'assets',
                     ],
@@ -166,6 +176,7 @@ class Fields
                     'display' => __("seo-pro::fieldsets/{$langFile}.twitter_handle"),
                     'instructions' => __("seo-pro::fieldsets/{$langFile}.twitter_handle_instruct"),
                     'type' => 'seo_pro_source',
+                    'localizable' => true,
                     'field' => [
                         'type' => 'text',
                     ],
@@ -179,6 +190,7 @@ class Fields
                     'placeholder' => $this->getPlaceholder('sitemap'),
                     'type' => 'seo_pro_source',
                     'disableable' => true,
+                    'localizable' => true,
                     'field' => false,
                     'from_field' => false,
                 ],
@@ -190,6 +202,7 @@ class Fields
                     'instructions' => __("seo-pro::fieldsets/{$langFile}.priority_instruct"),
                     'placeholder' => $this->getPlaceholder('priority'),
                     'type' => 'seo_pro_source',
+                    'localizable' => true,
                     'field' => [
                         'type' => 'text',
                     ],
@@ -202,6 +215,7 @@ class Fields
                     'instructions' => __("seo-pro::fieldsets/{$langFile}.change_frequency_instruct"),
                     'placeholder' => $this->getPlaceholder('change_frequency'),
                     'type' => 'seo_pro_source',
+                    'localizable' => true,
                     'field' => [
                         'type' => 'select',
                         'options' => [
