@@ -239,11 +239,29 @@ class Cascade
         }
 
         if (! method_exists($this->model, 'locales')) {
-            return collect(Config::getOtherLocales())->map(function ($locale) {
-                return ['locale' => $locale, 'url' => $this->model->existsIn($locale) ? $this->model->in($locale)->absoluteUrl() : $this->model->absoluteUrl()];
+
+	        $filtered = collect(Config::getOtherLocales())->filter(function ($locale) {
+
+	        	if(method_exists($this->model, 'existsIn') && !$this->model->existsIn($locale)){
+			        return true;
+		        }
+
+		        if(method_exists($this->model, 'existsIn') && $this->model->existsIn($locale) && $this->model->in($locale) && !$this->model->in($locale)->published()){
+			        return false;
+		        }
+
+		        return true;
+	        });
+            return $filtered->map(function ($locale) {
+				$model = $this->model;
+            	if(method_exists($this->model, 'existsIn') && $this->model->existsIn($locale) && $this->model->in($locale) && $this->model->in($locale)->published()){
+		            $model = $this->model->in($locale);
+	            }
+
+                return ['locale' => $locale, 'url' => $model->absoluteUrl()];
             })->all();
         }
-
+        
         $alternates = array_values(array_diff($this->model->locales(), [$this->model->locale()]));
 
         return collect($alternates)->map(function ($locale) {
