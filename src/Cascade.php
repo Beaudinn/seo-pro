@@ -240,7 +240,7 @@ class Cascade
 
         if (! method_exists($this->model, 'locales')) {
             return collect(Config::getOtherLocales())->map(function ($locale) {
-                return ['locale' => $locale, 'url' => $this->model->in($locale)->absoluteUrl()];
+                return ['locale' => $locale, 'url' => $this->model->existsIn($locale) ? $this->model->in($locale)->absoluteUrl() : $this->model->absoluteUrl()];
             })->all();
         }
 
