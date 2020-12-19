@@ -239,10 +239,7 @@ class Cascade
 		    return null;
 	    }
 
-	    if(method_exists($this->model, 'existsIn') && !$this->model->existsIn('realtor')){
-		    return true;
-	    }
-
+	   
 	    if(method_exists($this->model, 'existsIn') && $this->model->existsIn('realtor') && $this->model->in('realtor') && $this->model->in('realtor')->published()){
 		    return $this->model->in('realtor')->absoluteUrl();
 	    }
