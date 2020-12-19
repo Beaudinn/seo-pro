@@ -65,6 +65,7 @@ class Cascade
             'next_url' => $this->nextUrl(),
             'home_url' => URL::makeAbsolute('/'),
             'humans_txt' => $this->humans(),
+	    'default_url' => $this->defaultUrl(),
             'locale' => $this->locale(),
             'alternate_locales' => $this->alternateLocales(),
             'last_modified' => $this->lastModified(),
@@ -230,6 +231,25 @@ class Cascade
         return method_exists($this->model, 'locale')
             ? Config::getShortLocale($this->model->locale())
             : Site::default()->handle();
+    }
+	
+    protected function defaultUrl(){
+
+	    if (! $this->model) {
+		    return null;
+	    }
+
+	    if(method_exists($this->model, 'existsIn') && !$this->model->existsIn('realtor')){
+		    return true;
+	    }
+
+	    if(method_exists($this->model, 'existsIn') && $this->model->existsIn('realtor') && $this->model->in('realtor') && $this->model->in('realtor')->published()){
+		    return $this->model->in('realtor')->absoluteUrl();
+	    }
+
+
+
+	    return $this->model->absoluteUrl();
     }
 
     protected function alternateLocales()
