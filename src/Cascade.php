@@ -260,7 +260,7 @@ class Cascade
 	        $filtered = collect(Config::getOtherLocales())->filter(function ($locale) {
 
 	        	if(method_exists($this->model, 'existsIn') && !$this->model->existsIn($locale)){
-			        return true;
+			        return false;
 		        }
 
 		        if(method_exists($this->model, 'existsIn') && $this->model->existsIn($locale) && $this->model->in($locale) && !$this->model->in($locale)->published()){
